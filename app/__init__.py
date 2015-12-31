@@ -15,8 +15,12 @@ def not_found(error):
 
 # Import a module / component using its blueprint handler variable (sfdc_login)
 from app.sfdc_login.controllers import login
+from app.index_mod.controllers import ind
+from app.csv_analysis.controllers import upload
 
 # Register blueprint(s)
+app.register_blueprint(ind)
 app.register_blueprint(login)
+app.register_blueprint(upload)
 # app.register_blueprint(xyz_module)
 # ..

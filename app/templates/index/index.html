@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="margin-top: 75px;">
+	<div class="one-half column">
+		<div class="row">
+			<div class="one-half column">
+				<h4>Use Client Data</h4>
+				<p>Upload a .csv or delimited text file, and visualize data quality.</p>
+				<form action="/upload">
+					<button class="button-primary" type="submit" name="db">Upload File</button>
+				</form>
+			</div>
+			<div class="one-half column" style="position: relative;max-width: 80%; left: 120px; top: -10px;">
+				<img src="{{ url_for('static', filename='database-xxl.png')}}"/>
+			</div>
+		</div>
+		<div class="row" style="height: 75px;"></div>
+		<div class="row">
+			<div class="one-half column">
+				<h4>Use Salesforce</h4>
+				<p>Log into a client Salesforce Org. Select objects and fields of interest, and visualize data quality.</p>
+				<form>
+					<button class="button-primary" type="submit">Salesforce</button>
+				</form>
+			</div>
+			<div class="one-half column" style="position: relative;max-width: 80%; left: 60px; top: -10px;">
+				<img src="{{ url_for('static', filename='salesforce.png')}}"/>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="margin-top: 75px;">
+	<div class="one-third column value">&nbsp;</div>
+	<div class="one-third column value"></div>
+		<form method="POST" action="." accept-charset="UTF-8" role="form">
+				<h4>Analysis Results</h4>
+				<h5>This object has {{row_count}} rows.</h5>
+				{% for field in field_list %}
+					<div class="row">
+						<h5>{{ field['name'] }}</h5>
+					</div>
+					<div class="row">
+						<table class="u-full-width">
+						  <tbody>
+						  	<tr>
+						      <td>Inferred Datatype</td>
+						      <td>{{ field['dtype'] }}</td>
+						    </tr>
+						    <tr>
+						      <td>Number of Non-Null Records</td>
+						      <td>{{ field['num_records'] }}</td>
+						    </tr>
+						    <tr>
+						      <td>Percentage of Non-Null Values</td>
+						      <td>{{ field['percentage_nna'] }}</td>
+						    </tr>
+						    <tr>
+						      <td>Max Field Length</td>
+						      <td>{{ field['max_length'] }}</td>
+						    </tr>
+						    <tr>
+						      <td>Number of Unique Values</td>
+						      <td>{{ field['num_unique'] }}</td>
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
+				{% endfor %}
+				<div class="row">
+          			<a class="button button-primary" href="/upload">Upload Another</a>
+	        	</div>
+			</form>
+	<div class="one-third column value">&nbsp;</div>
+</div>
+{% endblock %}

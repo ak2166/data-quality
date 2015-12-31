@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="margin-top: 75px;">
+	<div class="one-third column value">&nbsp;</div>
+	<div class="one-third column value"></div>
+		<h4>Select Objects to Analyze</h4>
+		<form method="POST" action="." accept-charset="UTF-8" role="form">
+			<table class="u-full-width">
+			  <thead>
+			    <tr>
+			      <th>Object Name</th>
+			      <th><input type="checkbox" /></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	{% for index,obj in form.selected_objects.choices %}
+			    <tr>
+			      <td>{{obj}}</td>
+			      <td><input type="checkbox" name="checkbox_list" value="{{index}}"></td>
+			    </tr>
+			    {% endfor %}
+			  </tbody>
+			</table>
+			<div class="row">
+          		<input class="button-primary" type="submit" name="Submit"/>
+        	</div>
+		</form>
+	<div class="one-third column value">&nbsp;</div>
+</div>
+{% endblock %}

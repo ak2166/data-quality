@@ -2,28 +2,28 @@
 from flask import Blueprint, request, render_template, \
                   flash, g, session, redirect, url_for
 
-#Import simple salesforce
-from simple_salesforce import Salesforce
+#Import file uploading
+from werkzeug import secure_filename
 
-# Import module forms
-from app.sfdc_login.forms import LoginForm, SelectForm
+import os
+
+#Import Data Processing Libraries
+import pandas, numpy
 
 # Define the blueprint: 'login', set its url prefix: app.url/login
-login = Blueprint('login', __name__, url_prefix='/auth')
+upload = Blueprint('upload', __name__, url_prefix='/')
 sf = None
 # Set the route and accepted methods
-@login.route('/signin/', methods=['GET', 'POST'])
-def signin():
+@login.route('/upload/', methods=['GET', 'POST'])
+def upload_file():
 
-    # If sign in form is submitted
-	form = LoginForm(request.form)
-	# Verify the sign in form
-	if form.validate_on_submit():
-		session['un'] = form.email.data
-		session['pw'] = form.password.data
-		session['tk'] = form.token.data
-		return redirect(url_for('login.display'))
-	return render_template("auth/signin.html", form=form)
+    if request.method == 'POST' and 'photo' in request.files:
+        filename = photos.save(request.files['photo'])
+        rec = Photo(filename=filename, user=g.user.id)
+        rec.store()
+        flash("Done.")
+        return redirect(url_for('show', id=rec.id))
+    return render_template('upload.html')
 
 @login.route('/displayobjects/', methods=['GET', 'POST'])
 def display():

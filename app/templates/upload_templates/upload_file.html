@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+{% macro render_field(field, placeholder=None) %}
+{% if field.errors %}
+<div>
+{% elif field.flags.error %}
+<div>
+{% else %}
+<div>
+{% endif %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+</div>
+{% endmacro %}
+<div class="section">
+  <div class="container" style="margin-top: 75px;">
+    <div class="one-third column value">&nbsp;</div>
+    <div class="one-third column value">
+      <div class="row">
+        <h4>Upload File</h4>
+      </div>
+      <form method="POST" action="." enctype="multipart/form-data" accept-charset="UTF-8" role="form">
+        {{ form.csrf_token }}
+        <div class="row">
+          {{ render_field(form.delimiter, placeholder="Delimiter", class="u-full-width", autofocus="") }}
+        </div>
+        <div class="row">
+          {{ render_field(form.data_row, placeholder="Data Starts on Row", class="u-full-width", autofocus="") }}
+        </div>
+        <div class="row">
+            <div class="one-half column value">
+              <p>Contains Header</p>
+            </div>
+            <div class="one-half column value">
+              {{ render_field(form.contains_header ) }}
+            </div>
+        </div>
+        <div class="row">
+          <input type="file" name="uploaded_csv" class="u-full-width">
+        </div>
+        <div class="row">
+          <input class="button-primary" type="submit" name="Submit"/>
+        </div>
+      </form> 
+    </div>
+    <div class="one-third column value">&nbsp;</div> 
+  </div>
+</div>
+{% endblock %}
