@@ -70,7 +70,7 @@ def data_analysis():
 		field['max_length'] = df.iloc[:,i].map(lambda x: len(str(x))).max()
 		field['dtype'] = df.iloc[:, i].dtype
 		field['plot_url'] = ''
-		field['uniqueness]' = unique_values/record_count
+		field['uniqueness'] = field['num_unique']/field['num_records']
 		field['percentage_nna'] = format(float(field['num_records'])/len(df.iloc[:, i])*100.0, '.2F')
 		if field['num_unique'] < 30 and field['num_unique'] > 0:
 			field['value_count'] = df.iloc[:, i].value_counts()
