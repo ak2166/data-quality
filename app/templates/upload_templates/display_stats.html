@@ -35,6 +35,9 @@
 						    </tr>
 						  </tbody>
 						</table>
+						{% if field['plot_url'] != '' %}
+							<img src="data:image/png;base64, {{ field['plot_url'] }}">
+						{% endif %}
 					</div>
 				{% endfor %}
 				<div class="row">

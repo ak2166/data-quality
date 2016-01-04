@@ -8,5 +8,3 @@ from wtforms import TextField, PasswordField, BooleanField
 class UploadForm(Form):
     
     delimiter = TextField('Fields Delimited By')
-    data_row = TextField('Data Begins on Row')
-    contains_header = BooleanField('Has header row')

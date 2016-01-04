@@ -23,18 +23,6 @@
         {{ form.csrf_token }}
         <div class="row">
           {{ render_field(form.delimiter, placeholder="Delimiter", class="u-full-width", autofocus="") }}
-        </div>
-        <div class="row">
-          {{ render_field(form.data_row, placeholder="Data Starts on Row", class="u-full-width", autofocus="") }}
-        </div>
-        <div class="row">
-            <div class="one-half column value">
-              <p>Contains Header</p>
-            </div>
-            <div class="one-half column value">
-              {{ render_field(form.contains_header ) }}
-            </div>
-        </div>
         <div class="row">
           <input type="file" name="uploaded_csv" class="u-full-width">
         </div>
